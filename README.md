@@ -4,4 +4,4 @@
 
 
 
-. Its consist in a program that allows you to play Lord of the Rings (the rol game) in an easier way. 
+- It consists of a program that allows you to play Lord of the Rings (the role-playing game) in a simpler way. 
