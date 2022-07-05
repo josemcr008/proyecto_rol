@@ -92,6 +92,9 @@ public class Rolinterface extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
+        panel_principal.setBackground(new java.awt.Color(51, 51, 51));
+        panel_principal.setForeground(new java.awt.Color(204, 255, 204));
+        panel_principal.setDoubleBuffered(false);
         panel_principal.setPreferredSize(new java.awt.Dimension(800, 600));
 
         salir_button.setText("Salir");
@@ -101,6 +104,7 @@ public class Rolinterface extends javax.swing.JFrame {
             }
         });
 
+        tirada_ataque_button.setIcon(new javax.swing.ImageIcon("C:\\Users\\jomac\\Desktop\\JOSE\\Rol\\java\\v3\\rol\\src\\rol\\swords.png")); // NOI18N
         tirada_ataque_button.setText("Tirada de ataque");
         tirada_ataque_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
