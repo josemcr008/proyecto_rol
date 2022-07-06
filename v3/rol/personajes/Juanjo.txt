@@ -1,0 +1,10 @@
+BonAtaq
+23
+Arma
+4
+Per
+45
+BonDef
+43
+Armadura
+1
