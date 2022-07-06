@@ -1,5 +1,8 @@
 package rol;
-
+import java.io.*;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.io.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -66,7 +69,8 @@ public class Rolinterface extends javax.swing.JFrame {
         tirar_dado = new javax.swing.JButton();
         tipo_arma = new javax.swing.JComboBox<>();
         critico_button = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        eleccion_jugador1 = new javax.swing.JComboBox<>();
+        cargar_jugador = new javax.swing.JButton();
         tirada_critico_panel = new javax.swing.JPanel();
         cerrar_criticos_button = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -80,6 +84,13 @@ public class Rolinterface extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         tipo_critico = new javax.swing.JComboBox<>();
         texto_explicacion_critico = new javax.swing.JTextArea();
+        gestion_pj = new javax.swing.JPanel();
+        cerrar_criticos_button1 = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jButton7 = new javax.swing.JButton();
+        texto_critico2 = new javax.swing.JLabel();
+        eleccion_jugador = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("El Señor de los Anillos");
@@ -92,7 +103,7 @@ public class Rolinterface extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
-        panel_principal.setBackground(new java.awt.Color(51, 51, 51));
+        panel_principal.setBackground(new java.awt.Color(204, 204, 204));
         panel_principal.setForeground(new java.awt.Color(204, 255, 204));
         panel_principal.setDoubleBuffered(false);
         panel_principal.setPreferredSize(new java.awt.Dimension(800, 600));
@@ -104,7 +115,7 @@ public class Rolinterface extends javax.swing.JFrame {
             }
         });
 
-        tirada_ataque_button.setIcon(new javax.swing.ImageIcon("C:\\Users\\jomac\\Desktop\\JOSE\\Rol\\java\\v3\\rol\\src\\rol\\swords.png")); // NOI18N
+        tirada_ataque_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rol/swords.png"))); // NOI18N
         tirada_ataque_button.setText("Tirada de ataque");
         tirada_ataque_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,7 +123,8 @@ public class Rolinterface extends javax.swing.JFrame {
             }
         });
 
-        tirada_ataque_button1.setText("b");
+        tirada_ataque_button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rol/varita-magica.png"))); // NOI18N
+        tirada_ataque_button1.setText("Tirada de soritlegio");
         tirada_ataque_button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tirada_ataque_button1ActionPerformed(evt);
@@ -126,7 +138,7 @@ public class Rolinterface extends javax.swing.JFrame {
             }
         });
 
-        tirada_ataque_button3.setText("a");
+        tirada_ataque_button3.setText("Gestión de personajes");
         tirada_ataque_button3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tirada_ataque_button3ActionPerformed(evt);
@@ -140,11 +152,11 @@ public class Rolinterface extends javax.swing.JFrame {
             .addGroup(panel_principalLayout.createSequentialGroup()
                 .addGap(83, 83, 83)
                 .addGroup(panel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tirada_ataque_button3, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tirada_ataque_button2, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tirada_ataque_button1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tirada_ataque_button2, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(salir_button, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tirada_ataque_button, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tirada_ataque_button, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tirada_ataque_button3, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(131, Short.MAX_VALUE))
         );
         panel_principalLayout.setVerticalGroup(
@@ -152,11 +164,11 @@ public class Rolinterface extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_principalLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(tirada_ataque_button, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(tirada_ataque_button3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(37, 37, 37)
                 .addComponent(tirada_ataque_button1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(39, 39, 39)
+                .addComponent(tirada_ataque_button3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addComponent(tirada_ataque_button2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(salir_button, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,7 +259,19 @@ public class Rolinterface extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("Jugador");
+        eleccion_jugador1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jose", "Juande", "Paquito", "Angel", "Pablo", "Juan Jose", "Carlos" }));
+        eleccion_jugador1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eleccion_jugador1ActionPerformed(evt);
+            }
+        });
+
+        cargar_jugador.setText("Cargar");
+        cargar_jugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargar_jugadorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tirada_ataque_panelLayout = new javax.swing.GroupLayout(tirada_ataque_panel);
         tirada_ataque_panel.setLayout(tirada_ataque_panelLayout);
@@ -290,17 +314,16 @@ public class Rolinterface extends javax.swing.JFrame {
                             .addGroup(tirada_ataque_panelLayout.createSequentialGroup()
                                 .addGroup(tirada_ataque_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(tirada_ataque_panelLayout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(tirada_ataque_panelLayout.createSequentialGroup()
                                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(texto_dado, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(42, 42, 42)
-                                .addComponent(tirar_dado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(82, 82, 82)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tirar_dado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(tirada_ataque_panelLayout.createSequentialGroup()
+                                        .addComponent(eleccion_jugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cargar_jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(51, 51, 51)))
                         .addGap(150, 150, 150)))
@@ -309,7 +332,7 @@ public class Rolinterface extends javax.swing.JFrame {
         tirada_ataque_panelLayout.setVerticalGroup(
             tirada_ataque_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tirada_ataque_panelLayout.createSequentialGroup()
-                .addGap(0, 23, Short.MAX_VALUE)
+                .addGap(0, 27, Short.MAX_VALUE)
                 .addGroup(tirada_ataque_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tirada_ataque_panelLayout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -319,12 +342,15 @@ public class Rolinterface extends javax.swing.JFrame {
                         .addComponent(critico_button, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tirada_ataque_panelLayout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
                         .addGroup(tirada_ataque_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(texto_dado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tirar_dado, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(eleccion_jugador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cargar_jugador))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(tirada_ataque_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tirar_dado, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(tirada_ataque_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(texto_dado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(tirada_ataque_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -451,11 +477,9 @@ public class Rolinterface extends javax.swing.JFrame {
                                 .addComponent(texto_critico1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(124, 124, 124))
                             .addGroup(tirada_critico_panelLayout.createSequentialGroup()
-                                .addGap(0, 0, 0)
                                 .addComponent(tirar_dado1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         tirada_critico_panelLayout.setVerticalGroup(
@@ -488,6 +512,80 @@ public class Rolinterface extends javax.swing.JFrame {
                 .addGap(104, 104, 104))
         );
 
+        gestion_pj.setPreferredSize(new java.awt.Dimension(800, 600));
+        gestion_pj.setRequestFocusEnabled(false);
+
+        cerrar_criticos_button1.setText("Cancelar");
+        cerrar_criticos_button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrar_criticos_button1ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Aceptar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        texto_critico2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        texto_critico2.setForeground(new java.awt.Color(204, 0, 0));
+
+        eleccion_jugador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jose", "Juande", "Paquito", "Angel", "Pablo", "Juan Jose", "Carlos" }));
+        eleccion_jugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eleccion_jugadorActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Selecciona el jugador: ");
+
+        javax.swing.GroupLayout gestion_pjLayout = new javax.swing.GroupLayout(gestion_pj);
+        gestion_pj.setLayout(gestion_pjLayout);
+        gestion_pjLayout.setHorizontalGroup(
+            gestion_pjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gestion_pjLayout.createSequentialGroup()
+                .addGroup(gestion_pjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(gestion_pjLayout.createSequentialGroup()
+                        .addGap(57, 474, Short.MAX_VALUE)
+                        .addComponent(texto_critico2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124))
+                    .addGroup(gestion_pjLayout.createSequentialGroup()
+                        .addGroup(gestion_pjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(gestion_pjLayout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(cerrar_criticos_button1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(gestion_pjLayout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addGroup(gestion_pjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(gestion_pjLayout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(93, 93, 93)
+                                        .addComponent(eleccion_jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        gestion_pjLayout.setVerticalGroup(
+            gestion_pjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gestion_pjLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(gestion_pjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(eleccion_jugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(texto_critico2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(167, 167, 167)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(cerrar_criticos_button1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(104, 104, 104))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -496,7 +594,8 @@ public class Rolinterface extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panel_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tirada_ataque_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tirada_critico_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tirada_critico_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gestion_pj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -507,6 +606,8 @@ public class Rolinterface extends javax.swing.JFrame {
                 .addComponent(tirada_ataque_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tirada_critico_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gestion_pj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -614,6 +715,11 @@ public class Rolinterface extends javax.swing.JFrame {
                 else if(arma== "Contundentes")
                 {
                     Tabla_interface_contundentes tablas=new Tabla_interface_contundentes();
+                    tablas.setVisible(true);
+                }
+                else if(arma== "A dos manos")
+                {
+                    Tabla_interface_a2manos tablas=new Tabla_interface_a2manos();
                     tablas.setVisible(true);
                 }
                 texto_critico.setText("");
@@ -739,8 +845,195 @@ public class Rolinterface extends javax.swing.JFrame {
     }//GEN-LAST:event_tirada_ataque_button2ActionPerformed
 
     private void tirada_ataque_button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tirada_ataque_button3ActionPerformed
-        // TODO add your handling code here:
+       panel_principal.setVisible(false);
+       gestion_pj.setVisible(true);
+    /*    FileWriter fichero = null;
+        PrintWriter pw = null;
+        try
+        {
+            fichero = new FileWriter("../Jose.txt");
+            pw = new PrintWriter(fichero);
+
+            for (int i = 0; i < 10; i++)
+                pw.println("Linea " + i);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           try {
+           // Nuevamente aprovechamos el finally para 
+           // asegurarnos que se cierra el fichero.
+           if (null != fichero)
+              fichero.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }
+        
+        ****************************************************/
+        
+    /*File archivo = null;
+      FileReader fr = null;
+      BufferedReader br = null;
+
+      try {
+         // Apertura del fichero y creacion de BufferedReader para poder
+         // hacer una lectura comoda (disponer del metodo readLine()).
+         archivo = new File ("../Jose.txt");
+         fr = new FileReader (archivo);
+         br = new BufferedReader(fr);
+
+         // Lectura del fichero
+         String linea=br.readLine();
+         while(linea!=null)
+         {
+            System.out.println(linea);
+            if(linea.equals("BonAtaq"))
+            {
+                System.out.println("ASI");
+            }
+            linea=br.readLine();
+         }
+      }
+      catch(Exception e){
+         e.printStackTrace();
+      }finally{
+         // En el finally cerramos el fichero, para asegurarnos
+         // que se cierra tanto si todo va bien como si salta 
+         // una excepcion.
+         try{                    
+            if( null != fr ){   
+               fr.close();     
+            }                  
+         }catch (Exception e2){ 
+            e2.printStackTrace();
+         }
+      }
+    */
+   
     }//GEN-LAST:event_tirada_ataque_button3ActionPerformed
+
+    private void cerrar_criticos_button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrar_criticos_button1ActionPerformed
+        gestion_pj.setVisible(false);
+        panel_principal.setVisible(true);
+                
+                // TODO add your handling code here:
+    }//GEN-LAST:event_cerrar_criticos_button1ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    if(eleccion_jugador.getSelectedItem().equals("Jose"))
+    {
+        ficha_jose1 ficha=new ficha_jose1();
+        ficha.setVisible(true);        
+    }
+    if(eleccion_jugador.getSelectedItem().equals("Juande"))
+    {
+        ficha_juande ficha=new ficha_juande();
+        ficha.setVisible(true);        
+    }
+    if(eleccion_jugador.getSelectedItem().equals("Paquito"))
+    {
+        ficha_paquito ficha=new ficha_paquito();
+        ficha.setVisible(true);        
+    }
+    if(eleccion_jugador.getSelectedItem().equals("Angel"))
+    {
+        ficha_angel ficha=new ficha_angel();
+        ficha.setVisible(true);        
+    }
+    if(eleccion_jugador.getSelectedItem().equals("Juan Jose"))
+    {
+        ficha_juanjo ficha=new ficha_juanjo();
+        ficha.setVisible(true);        
+    }
+    if(eleccion_jugador.getSelectedItem().equals("Pablo"))
+    {
+        ficha_pablo ficha=new ficha_pablo();
+        ficha.setVisible(true);        
+    }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void eleccion_jugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eleccion_jugadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eleccion_jugadorActionPerformed
+
+    private void eleccion_jugador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eleccion_jugador1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eleccion_jugador1ActionPerformed
+
+    private void cargar_jugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargar_jugadorActionPerformed
+          File archivo = null;
+      FileReader fr = null;
+      BufferedReader br = null;
+
+      try {
+         // Apertura del fichero y creacion de BufferedReader para poder
+         // hacer una lectura comoda (disponer del metodo readLine()).
+         if(eleccion_jugador1.getSelectedItem().equals("Jose"))
+            archivo = new File ("personajes/Jose.txt");
+         if(eleccion_jugador1.getSelectedItem().equals("Juande"))
+            archivo = new File ("personajes/Juande.txt");
+         if(eleccion_jugador1.getSelectedItem().equals("Paquito"))
+            archivo = new File ("personajes/Paquito.txt");
+         if(eleccion_jugador1.getSelectedItem().equals("Juan Jose"))
+            archivo = new File ("personajes/Juanjo.txt");
+         if(eleccion_jugador1.getSelectedItem().equals("Angel"))
+            archivo = new File ("personajes/Angel.txt");
+         if(eleccion_jugador1.getSelectedItem().equals("Pablo"))
+            archivo = new File ("personajes/Pablo.txt");
+         if(eleccion_jugador1.getSelectedItem().equals("Carlos"))
+            archivo = new File ("personajes/Carlos.txt");
+         
+         fr = new FileReader (archivo);
+         br = new BufferedReader(fr);
+
+         // Lectura del fichero
+         String linea=br.readLine();
+         while(linea!=null)
+         {
+            
+            if(linea.equals("BonAtaq"))
+            {
+                texto_bonificador.setText(br.readLine());
+            }
+            
+            else if(linea.equals("Arma"))
+            {
+                String aux=br.readLine();
+                System.out.println(aux);
+                if(aux.equals("1"))
+                tipo_arma.setSelectedItem(String.valueOf("De filo"));
+                if(aux.equals("2"))
+                tipo_arma.setSelectedItem(String.valueOf("Contundentes"));
+                if(aux.equals("3"))
+                tipo_arma.setSelectedItem(String.valueOf("A dos manos"));
+                if(aux.equals("4"))
+                    tipo_arma.setSelectedItem(String.valueOf("Proyectiles"));
+                if(aux.equals("5"))
+                    tipo_arma.setSelectedItem(String.valueOf("Arrojadizas"));
+                if(aux.equals("6"))
+                    tipo_arma.setSelectedItem(String.valueOf("Armas de asta"));
+                
+         }
+         linea=br.readLine();
+
+      }
+      }catch(Exception e){
+         e.printStackTrace();
+      }finally{
+         // En el finally cerramos el fichero, para asegurarnos
+         // que se cierra tanto si todo va bien como si salta 
+         // una excepcion.
+         try{                    
+            if( null != fr ){   
+               fr.close();     
+            }                  
+         }catch (Exception e2){ 
+            e2.printStackTrace();
+        
+    }
+   }
+    }//GEN-LAST:event_cargar_jugadorActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -780,27 +1073,35 @@ public class Rolinterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cargar_jugador;
     private javax.swing.JButton cerrar_criticos_button;
+    private javax.swing.JButton cerrar_criticos_button1;
     private javax.swing.JButton critico_button;
+    private javax.swing.JComboBox<String> eleccion_jugador;
+    private javax.swing.JComboBox<String> eleccion_jugador1;
+    private javax.swing.JPanel gestion_pj;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JPanel panel_principal;
     private javax.swing.JButton salir_button;
     private javax.swing.JTextField texto_bonificador;
     private javax.swing.JLabel texto_critico;
     private javax.swing.JLabel texto_critico1;
+    private javax.swing.JLabel texto_critico2;
     private javax.swing.JTextField texto_dado;
     private javax.swing.JTextField texto_dado1;
     private javax.swing.JTextField texto_enemigo;
